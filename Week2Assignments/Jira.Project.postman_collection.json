@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "8d5caa84-f90d-4e9d-983c-9e19da810f46",
+		"name": "Jira Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23895596"
+	},
+	"item": [
+		{
+			"name": "CreateTicket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"resp = pm.response.json();\r",
+							"pm.globals.set(\"Jira_ID\", resp.id);\r",
+							"\r",
+							"console.log(\"Jira ID is :\"+resp.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "T6tEH20nL7jjCrBfTUcm61AC",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hari.radhakrishnan@testleaf.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"OC\"\r\n        },\r\n        \"summary\": \"SH: Create issue in OC project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Bug\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURI}}/rest/api/2/issue/",
+					"host": [
+						"{{baseURI}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetParticularTicket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "T6tEH20nL7jjCrBfTUcm61AC",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hari.radhakrishnan@testleaf.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseURI}}/rest/api/2/issue/{{Jira_ID}}",
+					"host": [
+						"{{baseURI}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{Jira_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllTickets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "T6tEH20nL7jjCrBfTUcm61AC",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "hari.radhakrishnan@testleaf.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURI}}/rest/api/2/search?jql=project=\"OC\"",
+					"host": [
+						"{{baseURI}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "jql",
+							"value": "project=\"OC\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

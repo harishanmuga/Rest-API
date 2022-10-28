@@ -1,0 +1,27 @@
+{
+	"id": "dcb0d9e8-fc30-47cc-8d15-f8fc24dca79c",
+	"values": [
+		{
+			"key": "g_sys_id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "SYS_ID",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Jira_ID",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-10-28T15:21:21.783Z",
+	"_postman_exported_using": "Postman/10.0.35"
+}
